@@ -1,0 +1,94 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCampeonato.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastroCampeonato.menu']}" />
+		</h1>
+
+		<h:form id="formCampeonato">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.nome}" />
+
+				<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.ano}" />
+
+				<p:outputLabel for="dataInicio"
+					value="#{msg['pages.cadastroCampeonato.dataInicio']}" />
+				<p:calendar id="dataInicio"
+					value="#{CapeonatoManagedBean.campeonato.dataInicioCampeonato}"
+					showOn="button" />
+
+				<p:outputLabel for="dataFim"
+					value="#{msg['pages.cadastroCampeonato.dataFim']}" />
+				<p:calendar id="dataFim"
+					value="#{CapeonatoManagedBean.campeonato.dataFimCampeonato}"
+					showOn="button" />
+
+				<p:outputLabel for="inscInicio"
+					value="#{msg['pages.cadastroCampeonato.inscInicio']}" />
+				<p:calendar id="inscInicio"
+					value="#{CapeonatoManagedBean.campeonato.dataInicioInscricao}"
+					showOn="button" />
+
+				<p:outputLabel for="inscFim"
+					value="#{msg['pages.cadastroCampeonato.inscFim']}" />
+				<p:calendar id="inscFim"
+					value="#{CapeonatoManagedBean.campeonato.dataFimFimInscricao}"
+					showOn="button" />
+
+				<p:outputLabel value="#{msg['pages.cadastroCampeonato.valor']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.valorTaxa}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroCampeonato.minJogadores']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.minJogadores}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroCampeonato.maxJogadores']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.maxJogadores}" />
+
+				<p:outputLabel value="#{msg['pages.cadastroCampeonato.minTimeCat']}" />
+				<p:inputText value="#{CapeonatoManagedBean.campeonato.minTimeCat}" />
+
+			</p:panelGrid>
+			<br />
+			<p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
+				action="#{CapeonatoManagedBean.salvar}"
+				update=":formCampeonato, :tabelaCampeonato" />
+		</h:form>
+		<br />
+		
+		<p:dataTable value="#{CapeonatoManagedBean.campeonatos}" var="aux"
+			id="tabelaCampeonato">
+
+			<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.ano']}">
+				<p:outputLabel value="#{aux.ano}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.dataInicio']}">
+				<p:outputLabel value="#{aux.dataInicioCampeonato}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.dataFim']}">
+				<p:outputLabel value="#{aux.dataFimCampeonato}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>

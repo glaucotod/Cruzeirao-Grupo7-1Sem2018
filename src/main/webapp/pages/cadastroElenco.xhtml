@@ -1,0 +1,76 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroElenco.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastroElenco.menu']}" />
+		</h1>
+
+		<h:form id="formElenco">
+<!-- 			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.cadastroElenco.time']}*: " />
+				<p:selectOneMenu id="time" style="width:125px">
+					<f:selectItem itemLabel="#{msg['pages.cadastroElenco.opcaoTime']}"
+						itemValue="#{elencoManagedBean.elenco.time}" />
+					<f:selectItem itemLabel="Java Soccers" itemValue="Java Soccers" />
+					<f:selectItem itemLabel="CSharpeiros FC" itemValue="CSharpeiros FC" />
+					<f:selectItem itemLabel="Abutua Team" itemValue="Abutua Team" />
+				</p:selectOneMenu>
+				
+				<h:dataTable value="#{equipeManagedBean.equipes}" var="user">
+					<h:column>
+						<h:selectOneMenu value="#{user.nome}">
+							<f:selectItems value="#{user.nome}" />
+						</h:selectOneMenu>
+					</h:column>
+				</h:dataTable>
+
+				<p:outputLabel value="#{msg['pages.cadastroElenco.documento']}*:" />
+				<p:inputText value="#{elencoManagedBean.elenco.documento}"
+					required="true" label="#{msg['pages.cadastroElenco.documento']}" />
+
+				<p:outputLabel value="#{msg['pages.cadastroElenco.nome']}*:" />
+				<p:inputText value="#{elencoManagedBean.elenco.nome}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroElenco.dataNascimento']}*: " />
+				<p:inputMask value="#{elencoManagedBean.elenco.dataNascimento}"
+					mask="99/99/9999" />
+
+			</p:panelGrid>
+			<p:commandButton value="#{msg['pages.cadastroElenco.btnSalvar']}"
+				action="#{elencoManagedBean.salvar}"
+				update=":formElenco, :tabelaElenco" /> -->
+		</h:form>
+
+	<!-- 	<p:dataTable value="#{elencoManagedBean.elencos}" var="aux"
+			id="tabelaElenco">
+			<p:column headerText="#{msg['pages.cadastroElenco.documento']}">
+				<p:outputLabel value="#{aux.documento}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroElenco.nome']}">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroElenco.dataNascimento']}">
+				<p:outputLabel value="#{aux.dataNascimento}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroElenco.time']}">
+				<p:outputLabel value="#{aux.time}" />
+			</p:column>
+
+		</p:dataTable>
+ -->
+	</ui:define>
+</ui:composition>

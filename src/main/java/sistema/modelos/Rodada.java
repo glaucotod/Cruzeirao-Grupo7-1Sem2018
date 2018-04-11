@@ -1,0 +1,49 @@
+package sistema.modelos;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+public class Rodada implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private int codigoRodada;
+	
+	private int numero;
+	
+	private Grupo grupo;
+	
+	private ArrayList<Partida> partidas= new ArrayList<Partida>();
+	
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public Grupo getGrupo() {
+		return grupo;
+	}
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
+	public ArrayList<Partida> getPartidas() {
+		return partidas;
+	}
+	public void setPartidas(ArrayList<Partida> partidas) {
+		this.partidas = partidas;
+	}
+	public int getCodigoRodada() {
+		return codigoRodada;
+	}
+	public void setCodigoRodada(int codigoRodada) {
+		this.codigoRodada = codigoRodada;
+	}
+	
+	}

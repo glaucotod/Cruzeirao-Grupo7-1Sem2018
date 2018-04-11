@@ -1,0 +1,55 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCategoria.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
+	  
+	  <h:form id="formCatergoria">	
+	  <p:panelGrid columns="2">
+      
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
+	  
+	  <p:outputLabel value="#{msg['pages.cadastroCategoria.idadeMin']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.idadeMin}"/>
+	  
+      <p:outputLabel value="#{msg['pages.cadastroCategoria.genero']}" />
+      <p:inputText value="#{categoriaManagedBean.categoria.genero}"/>
+	  
+	  </p:panelGrid>
+	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
+	                 action="#{categoriaManagedBean.salvar}"
+	                 update=":formCatergoria, :tabelaCatergoria"
+	                 />
+       </h:form>
+	
+   <p:dataTable value="#{categoriaManagedBean.categorias}"
+                var="aux"
+                id="tabelaCatergoria"
+   >
+      <p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCategoria.idadeMin']}">
+        <p:outputLabel value="#{aux.idadeMin}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroCategoria.genero']}">
+        <p:outputLabel value="#{aux.genero}" />
+      </p:column>
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>
