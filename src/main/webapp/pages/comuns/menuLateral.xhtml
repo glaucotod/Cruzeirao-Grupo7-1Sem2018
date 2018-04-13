@@ -5,46 +5,15 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
 		<p:panelMenu>
-		    <p:submenu label="#{msg['pages.comuns.menuLateral.inicio']}" >
-		       <p:menuitem value="#{msg['pages.novoUsuario.menu']}" url="novoUsuario.xhtml" />		       
-			   
-			   	<p:menuitem value="#{msg['pages.novoUsuario.novoADM.menu']}" url="cadastroADM.xhtml" rendered="#{request.isUserInRole('SUPERADMIN')}"/>		  
+			<p:submenu label="Cadastros" >
+		        <p:menuitem value="Novo Usuario" url="novoUsuario.xhtml" />		       	   
+				<p:menuitem value="Cadastro Campeonato" url="cadastroCampeonato.xhtml" rendered="#{request.isUserInRole('ORGANIZADOR') or request.isUserInRole('SUPERADMIN')}" />			
+				<p:menuitem value="Cadastro Categoria" url="cadastroCategoria.xhtml" />					
+				<p:menuitem value="Cadastro Local" url="cadastroLocal.xhtml" />								
+				<p:menuitem value="Cadastro Juiz" url="cadastroJuiz.xhtml" />			
+				<p:menuitem value="Cadastro Time" url="cadastroTime.xhtml" />
+				<p:menuitem value="Cadastro Elenco" url="cadastroElenco.xhtml" />										
 			</p:submenu>
-			
-			
-			<p:submenu label="#{msg['pages.comuns.menuLateral.gerencial']}">
-				<p:menuitem value="#{msg['pages.cadastroAluno.menu']}"      url="cadastroAluno.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroFornecedor.menu']}" url="cadastroFornecedor.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroProduto.menu']}" url="cadastroProduto.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroCampeonato.menuLateral']}" url="cadastroCampeonato.xhtml" rendered="#{request.isUserInRole('ORGANIZADOR') or request.isUserInRole('SUPERADMIN')}" />			
-				<p:menuitem value="#{msg['pages.cadastroCategoria.menuLateral']}" url="cadastroCategoria.xhtml" />					
-				<p:menuitem value="#{msg['pages.cadastroLocal.menuLateral']}" url="cadastroLocal.xhtml" />				
-				<p:menuitem value="#{msg['pages.chaveamento.menuLateral']}" url="chaveamento.xhtml" />				
-				<p:menuitem value="#{msg['pages.cadastroJuiz.menuLateral']}" url="cadastroJuiz.xhtml" />			
-				<p:menuitem value="#{msg['pages.gerenciamentoJogos.menuLateral']}" url="gerenciamentoJogos.xhtml" />
-			</p:submenu>				
-	      
-	       
-	       
-	       <p:submenu label="#{msg['pages.comuns.menuLateral.time']}">			
-				<p:menuitem value="#{msg['pages.cadastroTime.menuLateral']}" url="cadastroTime.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroElenco.menuLateral']}" url="cadastroElenco.xhtml" />
-				<p:menuitem value="#{msg['pages.validacaoTime.menuLateral']}" url="validacaoTime.xhtml" />				
-	       </p:submenu>
-	       
-	       
-	       <p:submenu label="#{msg['pages.comuns.menuLateral.inscricoes']}">			
-				<p:menuitem value="#{msg['pages.inscricaoTime.menuLateral']}" url="inscricaoTime.xhtml" />					
-				<p:menuitem value="#{msg['pages.inscriçaoPendente.menuLateral']}" url="inscricaoPendente.xhtml" />					
-				<p:menuitem value="#{msg['pages.inscricaoPagamento.menuLateral']}" url="inscricaoPagamento.xhtml" />					
-	       </p:submenu>
-	       
-	       			
-					
-			<p:submenu label="#{msg['pages.comuns.menuLateral.options']}">
-				<p:menuitem value="#{msg['pages.linguagem.menu']}" url="linguagem.xhtml" />
-	       </p:submenu>
-
 		</p:panelMenu>
 	</h:form>
 </ui:composition>

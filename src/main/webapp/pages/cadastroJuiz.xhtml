@@ -8,36 +8,36 @@
 >
 	
 	<ui:define name="title">
-		<h:outputText value="#{msg['pages.cadastroJuiz.title']}" />
+		<h:outputText value="Cadastro Juiz" />
 	</ui:define>
 	
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroJuiz.menu']}"/></h1>
+	  <h1><p:outputLabel value="Cadastro Juiz"/></h1>
 	  
 	  <h:form id="formJuiz">	
 		  <p:panelGrid columns="2">
 		  
-		      <p:outputLabel value="#{msg['pages.cadastroJuiz.nome']}" />
+		      <p:outputLabel value="Nome" />
 		      <p:inputText value="#{juizManageBean.juiz.nome}"/>
-			  <p:outputLabel value="#{msg['pages.cadastroJuiz.email']}" />
+			  <p:outputLabel value="Email" />
 		      <p:inputText value="#{juizManageBean.juiz.email}"/>
-		      <p:outputLabel value="#{msg['pages.cadastroJuiz.RG']}" />
+		      <p:outputLabel value="Rg" />
 		      <p:inputText value="#{juizManageBean.juiz.rg}"/>
 		      
 		  </p:panelGrid>
-		  <p:commandButton value="#{msg['pages.cadastroJuiz.btnSalvar']}" action="#{juizManageBean.salvar}" update="formJuiz :tabelaJuiz"/>
+		  <p:commandButton value="Salvar" action="#{juizManageBean.salvar}" update="formJuiz :tabelaJuiz"/>
        </h:form>
 	
 	   <p:dataTable value="#{juizManageBean.juizes}" var="aux" id="tabelaJuiz">
-	      <p:column headerText="#{msg['pages.cadastroJuiz.nome']}">
+	      <p:column headerText="Nome">
 	        <p:outputLabel value="#{aux.nome}" />
 	      </p:column>
-	      <p:column headerText="#{msg['pages.cadastroJuiz.email']}">
+	      <p:column headerText="Email">
 	        <p:outputLabel value="#{aux.email}" />
 	      </p:column>
-   	      <p:column headerText="#{msg['pages.cadastroJuiz.RG']}">
+   	      <p:column headerText="Rg">
 	        <p:outputLabel value="#{aux.rg}" />
 	      </p:column>
 	      

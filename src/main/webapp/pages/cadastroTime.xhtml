@@ -7,23 +7,23 @@
 	xmlns:ui2="http://java.sun.com/jsf/facelets">
 
 	<ui:define name="title">
-		<h:outputText value="#{msg['pages.cadastroTime.title']}" />
+		<h:outputText value="Cadastro Time" />
 	</ui:define>
 
 
 	<ui:define name="principal">
 
 		<h1>
-			<p:outputLabel value="#{msg['pages.cadastroTime.menu']}" />
+			<p:outputLabel value="Cadastro Time" />
 		</h1>
 
 		<h:form id="formTime">
 			<p:panelGrid columns="2">
-				<p:outputLabel value="#{msg['pages.cadastroTime.nome']}*:" />
+				<p:outputLabel value="Nome" />
 				<p:inputText value="#{equipeManagedBean.equipe.nome}"
 					required="true" label="#{msg['pages.cadastroTime.nome']}" />
 
-				<p:outputLabel value="Cidade*" />
+				<p:outputLabel value="Cidade" />
 				<p:inputText value="#{equipeManagedBean.equipe.cidade}"
 					required="true" label="Cidade" />
 
@@ -39,13 +39,13 @@
 				</h:selectOneMenu>
 
 			</p:panelGrid>
-			<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}"
+			<p:commandButton value="Salvar"
 				action="#{equipeManagedBean.salvar}" update=":formTime, :tabelaTime" />
 		</h:form>
 
 		<p:dataTable value="#{equipeManagedBean.equipes}" var="aux"
 			id="tabelaTime">
-			<p:column headerText="#{msg['pages.cadastroTime.nome']}">
+			<p:column headerText="Nome">
 				<p:outputLabel value="#{aux.nome}" />
 			</p:column>
 			<p:column headerText="Cidade">

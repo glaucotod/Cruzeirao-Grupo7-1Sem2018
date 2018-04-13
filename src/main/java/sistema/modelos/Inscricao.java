@@ -13,7 +13,6 @@ public class Inscricao {
 	
 	private Categoria categoria;
 	
-	private List<Partida> partidas = new ArrayList<Partida>();
 	
 	private Equipe equipe;
 
@@ -56,14 +55,6 @@ public class Inscricao {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-
-	public List<Partida> getPartidas() {
-		return partidas;
-	}
-
-	public void setPartidas(ArrayList<Partida> partidas) {
-		this.partidas = partidas;
 	}
 
 	public Equipe getEquipe() {
