@@ -1,24 +1,24 @@
 package sistema.beans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Local;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import sistema.service.LocalService;
 
 @ManagedBean
 @SessionScoped
 public class LocalManagedBean {
 	
-	private Local local = new Local();
-	private ArrayList <Local> locais = new ArrayList<Local>();
+	private Local local;
+	private LocalService service = new LocalService();
 	
-	public void salvar() {
-		locais.add(local);
+	public void Salvar(){
+		service.salvar(local);
 		local = new Local();
+		
 	}
 
 	public Local getLocal() {
@@ -29,8 +29,7 @@ public class LocalManagedBean {
 		this.local = local;
 	}
 
-	public List <Local> getLocais()
-	{
-		return locais;
+	public List<Local> getLocais() {
+		return service.getLocais();
 	}
 }

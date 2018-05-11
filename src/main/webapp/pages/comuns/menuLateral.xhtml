@@ -6,7 +6,7 @@
 	<h:form>
 		<p:panelMenu>
 			<p:submenu label="Cadastros" >
-		        <p:menuitem value="Novo Usuario" url="novoUsuario.xhtml" />		       	   
+		        <p:menuitem value="Novo Usuario" url="cadastroUsuario.xhtml" />		       	   
 				<p:menuitem value="Cadastro Campeonato" url="cadastroCampeonato.xhtml" rendered="#{request.isUserInRole('ORGANIZADOR') or request.isUserInRole('SUPERADMIN')}" />			
 				<p:menuitem value="Cadastro Categoria" url="cadastroCategoria.xhtml" />					
 				<p:menuitem value="Cadastro Local" url="cadastroLocal.xhtml" />								

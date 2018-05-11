@@ -1,19 +1,25 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Categoria;
+import sistema.service.CategoriaService;
 
 @ManagedBean
 @SessionScoped
 public class CategoriaManagedBean {
 
-	private Categoria categoria = new Categoria();
-	private ArrayList <Categoria> categorias = new ArrayList<Categoria>();
+	private Categoria categoria;
+	private CategoriaService service = new CategoriaService();
+	
+	public void Salvar(){
+		service.salvar(categoria);
+		categoria = new Categoria();
+		
+	}
 
 	public Categoria getCategoria() {
 		return categoria;
@@ -23,13 +29,8 @@ public class CategoriaManagedBean {
 		this.categoria = categoria;
 	}
 
-	public void salvar() {
-		categorias.add(categoria);
-		categoria = new Categoria();
+	public List<Categoria> getCartegoriass() {
+		return service.getCategorias();
 	}
 	
-	public List <Categoria> getCategorias()
-	{
-		return categorias;
-	}
 }

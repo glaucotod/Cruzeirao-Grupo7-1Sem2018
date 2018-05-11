@@ -1,23 +1,19 @@
 package sistema.modelos;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Campeonato {
-
-	private String nome;
-	private int ano;
-	private ArrayList<Local> locais = new ArrayList<Local>();
-	private ArrayList<Juiz> juizes= new ArrayList<Juiz>();
-	private Date  dataInicioInscricao;
-	private Date dataFimFimInscricao;
-	private Date dataInicioCampeonato;
-	private Date dataFimCampeonato;
-	private double valorTaxa;
-	private int minJogadores;
-	private int maxJogadores;
-	private int minTimeCat;
 	
+	private String nome;
+	private List<Local> locais;
+	private List<Juiz> juizes;
+	private List<Categoria> categorias;
+	private Date dataInicioInscricao;
+	private Date dataFimInscricao;
+	private Date dataInicioCampenato;
+	private Date dataFimCampeonato;
+	private Double valorTaixa;
 	
 	public String getNome() {
 		return nome;
@@ -25,23 +21,23 @@ public class Campeonato {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getAno() {
-		return ano;
-	}
-	public void setAno(int ano) {
-		this.ano = ano;
-	}
-	public ArrayList<Local> getLocais() {
+	public List<Local> getLocais() {
 		return locais;
 	}
-	public void setLocais(ArrayList<Local> locais) {
+	public void setLocais(List<Local> locais) {
 		this.locais = locais;
 	}
-	public ArrayList<Juiz> getJuizes() {
+	public List<Juiz> getJuizes() {
 		return juizes;
 	}
-	public void setJuizes(ArrayList<Juiz> juizes) {
+	public void setJuizes(List<Juiz> juizes) {
 		this.juizes = juizes;
+	}
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 	public Date getDataInicioInscricao() {
 		return dataInicioInscricao;
@@ -49,17 +45,17 @@ public class Campeonato {
 	public void setDataInicioInscricao(Date dataInicioInscricao) {
 		this.dataInicioInscricao = dataInicioInscricao;
 	}
-	public Date getDataFimFimInscricao() {
-		return dataFimFimInscricao;
+	public Date getDataFimInscricao() {
+		return dataFimInscricao;
 	}
-	public void setDataFimFimInscricao(Date dataFimFimInscricao) {
-		this.dataFimFimInscricao = dataFimFimInscricao;
+	public void setDataFimInscricao(Date dataFimInscricao) {
+		this.dataFimInscricao = dataFimInscricao;
 	}
-	public Date getDataInicioCampeonato() {
-		return dataInicioCampeonato;
+	public Date getDataInicioCampenato() {
+		return dataInicioCampenato;
 	}
-	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
-		this.dataInicioCampeonato = dataInicioCampeonato;
+	public void setDataInicioCampenato(Date dataInicioCampenato) {
+		this.dataInicioCampenato = dataInicioCampenato;
 	}
 	public Date getDataFimCampeonato() {
 		return dataFimCampeonato;
@@ -67,28 +63,19 @@ public class Campeonato {
 	public void setDataFimCampeonato(Date dataFimCampeonato) {
 		this.dataFimCampeonato = dataFimCampeonato;
 	}
-	public double getValorTaxa() {
-		return valorTaxa;
+	public Double getValorTaixa() {
+		return valorTaixa;
 	}
-	public void setValorTaxa(double valorTaxa) {
-		this.valorTaxa = valorTaxa;
+	public void setValorTaixa(Double valorTaixa) {
+		this.valorTaixa = valorTaixa;
 	}
-	public int getMinJogadores() {
-		return minJogadores;
+	
+	@Override
+	public String toString() {
+		return "Campeonato [nome=" + nome + ", locais=" + locais + ", juizes=" + juizes + ", categorias=" + categorias
+				+ ", dataInicioInscricao=" + dataInicioInscricao + ", dataFimInscricao=" + dataFimInscricao
+				+ ", dataInicioCampenato=" + dataInicioCampenato + ", dataFimCampeonato=" + dataFimCampeonato
+				+ ", valorTaixa=" + valorTaixa + "]";
 	}
-	public void setMinJogadores(int minJogadores) {
-		this.minJogadores = minJogadores;
-	}
-	public int getMaxJogadores() {
-		return maxJogadores;
-	}
-	public void setMaxJogadores(int maxJogadores) {
-		this.maxJogadores = maxJogadores;
-	}
-	public int getMinTimeCat() {
-		return minTimeCat;
-	}
-	public void setMinTimeCat(int minTimeCat) {
-		this.minTimeCat = minTimeCat;
-	}	
+	
 }

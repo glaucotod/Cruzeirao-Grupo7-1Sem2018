@@ -1,7 +1,8 @@
 package sistema.modelos;
 
-public class Juiz extends Usuario {
+public class Juiz {
 	
+	private Enum tipo;
 	private Usuario usuario;
 	
 	public Usuario getUsuario() {
@@ -10,5 +11,6 @@ public class Juiz extends Usuario {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
 	
 }

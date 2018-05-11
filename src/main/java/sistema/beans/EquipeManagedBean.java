@@ -1,23 +1,24 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Equipe;
+import sistema.service.EquipeService;
 
 @ManagedBean
 @SessionScoped
 public class EquipeManagedBean {
 	
-	private Equipe equipe = new Equipe();
-	private ArrayList <Equipe> equipes = new ArrayList<Equipe>();
+	private Equipe equipe;
+	private EquipeService service = new EquipeService();
 	
-	public void salvar() {
-		equipes.add(equipe);
+	public void Salvar(){
+		service.salvar(equipe);
 		equipe = new Equipe();
+		
 	}
 
 	public Equipe getEquipe() {
@@ -28,9 +29,9 @@ public class EquipeManagedBean {
 		this.equipe = equipe;
 	}
 
-	public List <Equipe> getEquipes()
-	{
-		return equipes;
+	public List<Equipe> getEquipes() {
+		return service.getEquipes();
 	}
+	
 
 }

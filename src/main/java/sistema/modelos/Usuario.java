@@ -4,21 +4,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Usuario {
-
+	
 	private String nome;
 	private String email;
 	private Date dataNascimento;
 	private List<Equipe> equipes;
 	private List<Inscrito> inscricoes;
 	private List<Campeonato> campeonatos;
-	private String tipo;
+	private Enum tipo;
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
 	private String cref;
-	private String sexo;
+	private Enum sexo;
 	private String foto;
 	
 	public String getNome() {
@@ -100,41 +100,6 @@ public class Usuario {
 		this.foto = foto;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		return true;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
+	
 
 }

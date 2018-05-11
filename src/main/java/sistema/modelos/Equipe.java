@@ -1,18 +1,15 @@
 package sistema.modelos;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Equipe {
 
 	private String nome;
-
 	private Date dataFundacao;
 	private String cidade;
-
-	private List<Usuario> diretores= new ArrayList<Usuario>();
-
+	private List<Usuario> diretores;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -34,8 +31,13 @@ public class Equipe {
 	public List<Usuario> getDiretores() {
 		return diretores;
 	}
-	public void setDiretores(ArrayList<Usuario> diretores) {
+	public void setDiretores(List<Usuario> diretores) {
 		this.diretores = diretores;
+	}
+	@Override
+	public String toString() {
+		return "Equipe [nome=" + nome + ", dataFundacao=" + dataFundacao + ", cidade=" + cidade + ", diretores="
+				+ diretores + "]";
 	}
 	
 	

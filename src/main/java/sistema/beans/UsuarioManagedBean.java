@@ -1,25 +1,24 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Usuario;
+import sistema.service.UsuarioService;
 
 @ManagedBean
 @SessionScoped
 public class UsuarioManagedBean {
 
-	private Usuario usuario = new Usuario();
-	private ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
+	private Usuario usuario;
+	private UsuarioService service = new UsuarioService();
 	
-	private String nome;
-
-	public void salvar() {
-		usuarios.add(usuario);
+	public void Salvar(){
+		service.salvar(usuario);
 		usuario = new Usuario();
+		
 	}
 
 	public Usuario getUsuario() {
@@ -31,15 +30,6 @@ public class UsuarioManagedBean {
 	}
 
 	public List<Usuario> getUsuarios() {
-		return usuarios;
+		return service.getUsuarios();
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 }

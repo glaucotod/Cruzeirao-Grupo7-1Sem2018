@@ -1,8 +1,7 @@
 package sistema.modelos;
 
 public class Local {
-
-	private int codigoLocal;
+	
 	private String endereco;
 
 	public String getEndereco() {
@@ -13,12 +12,10 @@ public class Local {
 		this.endereco = endereco;
 	}
 
-	public int getCodigoLocal() {
-		return codigoLocal;
+	@Override
+	public String toString() {
+		return "Local [endereco=" + endereco + "]";
 	}
-
-	public void setCodigoLocal(int codigoLocal) {
-		this.codigoLocal = codigoLocal;
-	}
+	
 	
 }

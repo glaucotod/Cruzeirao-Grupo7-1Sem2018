@@ -1,22 +1,24 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import sistema.modelos.Inscricao;
+import sistema.service.InscricaoService;
 
 @ManagedBean
 @SessionScoped
 public class InscricaoManagedBean {
+
+	private Inscricao inscricao;
+	private InscricaoService service = new InscricaoService();
 	
-	private Inscricao inscricao = new Inscricao();
-	private ArrayList <Inscricao> inscricoes = new ArrayList<Inscricao>();
-	
-	public void salvar() {
-		inscricoes.add(inscricao);
+	public void Salvar(){
+		service.salvar(inscricao);
 		inscricao = new Inscricao();
+		
 	}
 
 	public Inscricao getInscricao() {
@@ -27,9 +29,7 @@ public class InscricaoManagedBean {
 		this.inscricao = inscricao;
 	}
 
-	public List <Inscricao> getInscricoes()
-	{
-		return inscricoes;
+	public List<Inscricao> getInscricoes() {
+		return service.getInscricoes();
 	}
-
 }
