@@ -3,21 +3,31 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
 public class Usuario {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private String nome;
 	private String email;
 	private Date dataNascimento;
-	private List<Equipe> equipes;
+	private List<Equipe> equipes;	
 	private List<Inscrito> inscricoes;
 	private List<Campeonato> campeonatos;
-	private Enum tipo;
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
-	private String cref;
 	private Enum sexo;
 	private String foto;
 	
@@ -87,17 +97,17 @@ public class Usuario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getCref() {
-		return cref;
-	}
-	public void setCref(String cref) {
-		this.cref = cref;
-	}
 	public String getFoto() {
 		return foto;
 	}
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

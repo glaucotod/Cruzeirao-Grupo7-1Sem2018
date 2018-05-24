@@ -29,7 +29,4 @@ public class UsuarioManagedBean {
 		this.usuario = usuario;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return service.getUsuarios();
-	}
 }

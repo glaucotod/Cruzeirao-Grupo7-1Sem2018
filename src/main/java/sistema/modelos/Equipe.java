@@ -3,13 +3,28 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
-public class Equipe {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Equipe {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private String nome;
 	private Date dataFundacao;
 	private String cidade;
 	private List<Usuario> diretores;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}

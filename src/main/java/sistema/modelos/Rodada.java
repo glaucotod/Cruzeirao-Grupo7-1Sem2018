@@ -2,12 +2,19 @@ package sistema.modelos;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Rodada {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int numero;
 	private Grupo grupo;
 	private List<Partida> partidas;
-	
 	public int getNumero() {
 		return numero;
 	}

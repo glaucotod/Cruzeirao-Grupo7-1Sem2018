@@ -2,13 +2,28 @@ package sistema.modelos;
 
 import java.util.List;
 
-public class Grupo {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Grupo {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private String nome;
 	private Fase fase;
 	private List<Rodada> rodadas;
 	private int numero;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}

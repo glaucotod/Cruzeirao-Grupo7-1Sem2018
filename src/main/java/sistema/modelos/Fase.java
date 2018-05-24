@@ -3,8 +3,17 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
-public class Fase {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Fase {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private Date dataInicio;
 	private Date dataFim;
 	private Enum formato;
@@ -12,6 +21,12 @@ public class Fase {
 	private List<Grupo> grupos;
 	private int numero;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Date getDataInicio() {
 		return dataInicio;
 	}

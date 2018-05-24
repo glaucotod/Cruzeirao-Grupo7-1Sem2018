@@ -29,9 +29,6 @@ public class CampeonatoManagedBean {
 		this.campeonato = campeonato;
 	}
 
-	public List<Campeonato> getCampeonatos() {
-		return service.getCampeonatos();
-	}
 	
 		
 

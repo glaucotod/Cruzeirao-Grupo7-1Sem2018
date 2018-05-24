@@ -2,50 +2,41 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.CampeonatoDAO;
 import sistema.modelos.Campeonato;
+import sistema.modelos.Usuario;
 
 
 public class CampeonatoService {
-	
-	private EntityManagerFactory emf;
-	
-	public CampeonatoService()
+
+ 	CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+ 	
+	public Campeonato salvar(Campeonato campeonato)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Campeonato campeonato)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(campeonato);
-		em.getTransaction().commit();	
-	    em.close();
+		campeonato = campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
+		return campeonato;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	public List <Campeonato> getCampeonatos()
+	public List <Campeonato> getusuarios()
 	{
-		
-		List <Campeonato> campeonatos;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Campeonato a");
-		campeonatos = q.getResultList();
-		em.close();
-		
-		return campeonatos;
-		
+		List<Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
+		campeonatoDAO.closeEntityManager();
+		return list;
 	}
+
+	public void alterar(Campeonato campeonato) {
+		campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
+	}
+
 	
+	public void remover(Campeonato campeonato) {
+		
+		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getId());
+		campeonatoDAO.remove(campeonato);
+		campeonatoDAO.closeEntityManager();
+	}
 	
 }
-

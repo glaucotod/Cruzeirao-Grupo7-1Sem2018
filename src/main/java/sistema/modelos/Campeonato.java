@@ -3,8 +3,17 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Campeonato {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private String nome;
 	private List<Local> locais;
 	private List<Juiz> juizes;
@@ -15,6 +24,13 @@ public class Campeonato {
 	private Date dataFimCampeonato;
 	private Double valorTaixa;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}

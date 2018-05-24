@@ -3,8 +3,17 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Partida {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private int numero;
 	private Inscricao equipeMandante;
 	private Inscricao equipeVisitante;
@@ -15,6 +24,13 @@ public class Partida {
 	private Grupo grupo;
 	private String relatoJuiz;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getNumero() {
 		return numero;
 	}

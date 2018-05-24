@@ -2,8 +2,17 @@ package sistema.modelos;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class PartidaFutebol {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private List<Gol> golsMandante;
 	private List<Gol> golsVisitante;
 	private List<Gol> golsPenaltisMandante;
@@ -11,6 +20,13 @@ public class PartidaFutebol {
 	private List<Cartao> cartoesMandante;
 	private List<Cartao> cartoesVisitantes;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public List<Gol> getGolsMandante() {
 		return golsMandante;
 	}
