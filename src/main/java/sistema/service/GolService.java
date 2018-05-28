@@ -2,49 +2,39 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.GolDAO;
 import sistema.modelos.Gol;
 
 public class GolService {
 
-private EntityManagerFactory emf;
-	
-	public GolService()
+ 	GolDAO golDAO = new GolDAO();
+ 	
+	public Gol salvar(Gol gol)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Gol gol)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(gol);
-		em.getTransaction().commit();	
-	    em.close();
+		gol = golDAO.save(gol);
+		golDAO.closeEntityManager();
+		return gol;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Gol> getGols()
 	{
+		List <Gol> list = golDAO.getAll(Gol.class);
+		golDAO.closeEntityManager();
+		return list;
+	}
+
+	public void alterar(Gol gol) {
+		golDAO.save(gol);
+		golDAO.closeEntityManager();
+	}
+
+	
+	public void remover(Gol gol) {
 		
-		List <Gol> gols;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Gol a");
-		gols = q.getResultList();
-		em.close();
-		
-		return gols;
-		
+		gol = golDAO.getById(Gol.class, gol.getId());
+		golDAO.remove(gol);
+		golDAO.closeEntityManager();
 	}
 	
-	
 }
-

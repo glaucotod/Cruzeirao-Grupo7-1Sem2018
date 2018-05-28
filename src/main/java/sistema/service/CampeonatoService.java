@@ -4,7 +4,6 @@ import java.util.List;
 
 import sistema.dao.CampeonatoDAO;
 import sistema.modelos.Campeonato;
-import sistema.modelos.Usuario;
 
 
 public class CampeonatoService {
@@ -19,9 +18,9 @@ public class CampeonatoService {
 		
 	}
 	
-	public List <Campeonato> getusuarios()
+	public List <Campeonato> getCampeonatos()
 	{
-		List<Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
+		List <Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
 		campeonatoDAO.closeEntityManager();
 		return list;
 	}

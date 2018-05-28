@@ -3,10 +3,15 @@ package sistema.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Campeonato {
@@ -15,7 +20,15 @@ public class Campeonato {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String nome;
+	
+	@ManyToMany
+    @JoinTable(
+        name = "locais_campeonato",
+        joinColumns = @JoinColumn(name = "id"),
+        inverseJoinColumns = @JoinColumn(name = "id")
+    )
 	private List<Local> locais;
+	
 	private List<Juiz> juizes;
 	private List<Categoria> categorias;
 	private Date dataInicioInscricao;

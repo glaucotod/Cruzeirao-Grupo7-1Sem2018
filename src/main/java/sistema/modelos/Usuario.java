@@ -28,7 +28,7 @@ public class Usuario {
 	private String endereco;
 	private String rg;
 	private String cpf;
-	private Enum sexo;
+	private String sexo;
 	private String foto;
 	
 	public String getNome() {
@@ -108,6 +108,12 @@ public class Usuario {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 	
 	

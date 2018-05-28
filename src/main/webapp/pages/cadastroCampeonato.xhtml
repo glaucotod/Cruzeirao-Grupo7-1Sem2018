@@ -14,37 +14,21 @@
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroCampeonato.menu']}"/></h1>
+	  <h1><p:outputLabel value="#{'Cadatro Campeonato'}"/></h1>
 	  
 	  <h:form id="formCampeonato">	
 	  <p:panelGrid columns="2">
-      <p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
+      <p:outputLabel value="#{'Nome'}" />
       <p:inputText value="#{campeonatoManagedBean.campeonato.nome}"/>
-      <<p:outputLabel for="mask" value="Mask:" />
-      <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+   
 	  
 	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroAluno.btnSalvar']}" 
-	                 action="#{alunoManagedBean.salvar}"
-	                 update=":formAluno, :tabelaAluno"
+	  <p:commandButton value="#{'Salvar'}" 
+	                 action="#{CampeonatoManagedBean.salvar}"
+	                 update=":formCampeonato "
 	                 />
        </h:form>
 	
-   <p:dataTable value="#{alunoManagedBean.alunos}"
-                var="aux"
-                id="tabelaAluno"
-   >
-      <p:column headerText="#{msg['pages.cadastroAluno.matricula']}">
-        <p:outputLabel value="#{aux.matricula}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroAluno.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroAluno.curso']}">
-        <p:outputLabel value="#{aux.curso}" />
-      </p:column>
-      
-   </p:dataTable>	
 	   
 	</ui:define>
 </ui:composition>

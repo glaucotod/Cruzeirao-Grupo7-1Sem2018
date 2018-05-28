@@ -14,14 +14,14 @@
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroLocal.menu']}"/></h1>
+	  <h1><p:outputLabel value="#{'Cadastro Local'}"/></h1>
 	  
 	  <h:form id="formLocal">	
 	  <p:panelGrid columns="2">
-      <p:outputLabel value="#{msg['pages.cadastroLocal.endereco']}" />
-      <p:inputText value="#{localManagedBean.local.endereco}"/>
+      <p:outputLabel value="#{'Endereço'}" />
+      <p:inputText value="#{LocalManagedBean.local.endereco}"/>
 	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroLocal.btnSalvar']}" 
+	  <p:commandButton value="#{'Salvar'}" 
 	                 action="#{localManagedBean.Salvar}"
 	                 update=":formLocal"
 	                 />

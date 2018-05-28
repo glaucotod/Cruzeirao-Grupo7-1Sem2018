@@ -2,49 +2,39 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.CartaoDAO;
 import sistema.modelos.Cartao;
 
 public class CartaoService {
 
-private EntityManagerFactory emf;
-	
-	public CartaoService()
+ 	CartaoDAO cartaoDAO = new CartaoDAO();
+ 	
+	public Cartao salvar(Cartao cartao)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Cartao cartao)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(cartao);
-		em.getTransaction().commit();	
-	    em.close();
+		cartao = cartaoDAO.save(cartao);
+		cartaoDAO.closeEntityManager();
+		return cartao;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Cartao> getCartoes()
 	{
+		List <Cartao> list = cartaoDAO.getAll(Cartao.class);
+		cartaoDAO.closeEntityManager();
+		return list;
+	}
+
+	public void alterar(Cartao cartao) {
+		cartaoDAO.save(cartao);
+		cartaoDAO.closeEntityManager();
+	}
+
+	
+	public void remover(Cartao cartao) {
 		
-		List <Cartao> cartoes;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Cartao a");
-		cartoes = q.getResultList();
-		em.close();
-		
-		return cartoes;
-		
+		cartao = cartaoDAO.getById(Cartao.class, cartao.getId());
+		cartaoDAO.remove(cartao);
+		cartaoDAO.closeEntityManager();
 	}
 	
-	
 }
-

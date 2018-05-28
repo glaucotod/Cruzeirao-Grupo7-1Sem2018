@@ -2,50 +2,40 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.CategoriaDAO;
 import sistema.modelos.Categoria;
 
 
 public class CategoriaService {
 
-private EntityManagerFactory emf;
-	
-	public CategoriaService()
+ 	CategoriaDAO categoriaDAO = new CategoriaDAO();
+ 	
+	public Categoria salvar(Categoria categoria)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Categoria categoria)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(categoria);
-		em.getTransaction().commit();	
-	    em.close();
+		categoria = categoriaDAO.save(categoria);
+		categoriaDAO.closeEntityManager();
+		return categoria;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Categoria> getCategorias()
 	{
+		List <Categoria> list = categoriaDAO.getAll(Categoria.class);
+		categoriaDAO.closeEntityManager();
+		return list;
+	}
+
+	public void alterar(Categoria categoria) {
+		categoriaDAO.save(categoria);
+		categoriaDAO.closeEntityManager();
+	}
+
+	
+	public void remover(Categoria categoria) {
 		
-		List <Categoria> categorias;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Categoria a");
-		categorias = q.getResultList();
-		em.close();
-		
-		return categorias;
-		
+		categoria = categoriaDAO.getById(Categoria.class, categoria.getId());
+		categoriaDAO.remove(categoria);
+		categoriaDAO.closeEntityManager();
 	}
 	
-	
 }
-

@@ -2,49 +2,39 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.JuizDAO;
 import sistema.modelos.Juiz;
 
 public class JuizService {
 
-private EntityManagerFactory emf;
-	
-	public JuizService()
+ 	JuizDAO juizDAO = new JuizDAO();
+ 	
+	public Juiz salvar(Juiz juiz)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Juiz juiz)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(juiz);
-		em.getTransaction().commit();	
-	    em.close();
+		juiz = juizDAO.save(juiz);
+		juizDAO.closeEntityManager();
+		return juiz;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Juiz> getJuizes()
 	{
+		List <Juiz> list = juizDAO.getAll(Juiz.class);
+		juizDAO.closeEntityManager();
+		return list;
+	}
+
+	public void alterar(Juiz juiz) {
+		juizDAO.save(juiz);
+		juizDAO.closeEntityManager();
+	}
+
+	
+	public void remover(Juiz juiz) {
 		
-		List <Juiz> juizes;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Juiz a");
-		juizes = q.getResultList();
-		em.close();
-		
-		return juizes;
-		
+		juiz = juizDAO.getById(Juiz.class, juiz.getId());
+		juizDAO.remove(juiz);
+		juizDAO.closeEntityManager();
 	}
 	
-	
 }
-

@@ -20,7 +20,7 @@ public class Categoria {
 	private List<Fase> fases;
 	private int minJogadores;
 	private int maxJogadores;
-	private EnumSexo Sexo;
+	private String Sexo;
 	
 	public int getId() {
 		return id;
@@ -70,10 +70,11 @@ public class Categoria {
 	public void setMaxJogadores(int maxJogadores) {
 		this.maxJogadores = maxJogadores;
 	}
-	public EnumSexo getSexo() {
+	
+	public String getSexo() {
 		return Sexo;
 	}
-	public void setSexo(EnumSexo sexo) {
+	public void setSexo(String sexo) {
 		Sexo = sexo;
 	}
 	@Override

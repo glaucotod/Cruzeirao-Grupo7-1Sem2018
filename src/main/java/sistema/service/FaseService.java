@@ -2,49 +2,39 @@ package sistema.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
+import sistema.dao.FaseDAO;
 import sistema.modelos.Fase;
 
 public class FaseService {
 
-private EntityManagerFactory emf;
-	
-	public FaseService()
+ 	FaseDAO faseDAO = new FaseDAO();
+ 	
+	public Fase salvar(Fase fase)
 	{
-	      emf = Persistence.createEntityManagerFactory("Cruzeirao_2018");
-	}
-	
-	public void salvar(Fase fase)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(fase);
-		em.getTransaction().commit();	
-	    em.close();
+		fase = faseDAO.save(fase);
+		faseDAO.closeEntityManager();
+		return fase;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Fase> getFases()
 	{
+		List <Fase> list = faseDAO.getAll(Fase.class);
+		faseDAO.closeEntityManager();
+		return list;
+	}
+
+	public void alterar(Fase fase) {
+		faseDAO.save(fase);
+		faseDAO.closeEntityManager();
+	}
+
+	
+	public void remover(Fase fase) {
 		
-		List <Fase> fases;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Fase a");
-		fases = q.getResultList();
-		em.close();
-		
-		return fases;
-		
+		fase = faseDAO.getById(Fase.class, fase.getId());
+		faseDAO.remove(fase);
+		faseDAO.closeEntityManager();
 	}
 	
-	
 }
-
