@@ -8,24 +8,24 @@
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
 	
 	<ui:define name="title">
-		<h:outputText value="Cadastro Campeonato" />
+		<h:outputText value="Cadastro Equipe" />
 	</ui:define>
 	
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="Cadastro Campeonato"/></h1>
+	  <h1><p:outputLabel value="Cadastro Equipe"/></h1>
 	  
-	  <h:form id="formCampeonato">	
+	  <h:form id="formEquipe">	
 	  <p:panelGrid columns="2">
       <p:outputLabel value="Nome" />
-      <p:inputText value="#{CampeonatoManagedBean.campeonato.nome}"/>
-      <p:outputLabel value="Valor Taxa" />
-      <p:inputText value="#{CampeonatoManagedBean.campeonato.valorTaxa}"/>
+      <p:inputText value="#{EquipeManagedBean.equipe.nome}"/>
+      <p:outputLabel value="Cidade" />
+      <p:inputText value="#{EquipeManagedBean.equipe.cidade}"/>
 	  </p:panelGrid>
 	  <p:commandButton value="Salvar" 
-	                 action="#{CampeonatoManagedBean.Salvar}"
-	                 update=":formCampeonato"
+	                 action="#{EquipeManagedBean.Salvar}"
+	                 update=":formEquipe"
 	                 />
        </h:form>
 	   
