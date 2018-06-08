@@ -22,8 +22,8 @@
       <p:inputText value="#{LocalManagedBean.local.endereco}"/>
 	  </p:panelGrid>
 	  <p:commandButton value="#{'Salvar'}" 
-	                 action="#{localManagedBean.Salvar}"
-	                 update=":formLocal"
+	                 update=":formLocal, :formTableLocais"
+	                 action="#{LocalManagedBean.Salvar}"
 	                 />
        </h:form>
 	   

@@ -1,7 +1,5 @@
 package sistema.beans;
 
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -12,7 +10,7 @@ import sistema.service.UsuarioService;
 @SessionScoped
 public class UsuarioManagedBean {
 
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();
 	
 	public void Salvar(){

@@ -12,6 +12,12 @@ public class Local {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String endereco;
+	
+	
+
+	public Local() {
+		super();
+	}
 
 	public int getId() {
 		return id;

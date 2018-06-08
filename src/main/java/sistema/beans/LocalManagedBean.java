@@ -1,14 +1,12 @@
 package sistema.beans;
 
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Local;
 import sistema.service.LocalService;
 
-@ManagedBean
+@ManagedBean(name = "LocalManagedBean")
 @SessionScoped
 public class LocalManagedBean {
 	
@@ -29,7 +27,4 @@ public class LocalManagedBean {
 		this.local = local;
 	}
 
-	public List<Local> getLocais() {
-		return service.getLocais();
-	}
 }

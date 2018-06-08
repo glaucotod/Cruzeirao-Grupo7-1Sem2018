@@ -19,31 +19,31 @@
 	  <h:form id="formUsuario">	
 	  <p:panelGrid columns="2">
       <p:outputLabel value="Nome" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.nome}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.nome}"/>
 	  <p:outputLabel value="Email" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.email}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.email}"/>
       <p:outputLabel value="RG" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.rg}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.rg}"/>
       <p:outputLabel value="CPF" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.cpf}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.cpf}"/>
       <p:outputLabel value="Data de Nascimento" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.dataNascimento}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.dataNascimento}"/>
       <p:outputLabel for="sexo" value="Sexo" />
-        <p:selectOneMenu id="sexo" value="#{UsuarioManagedBean.usuario.sexo}" style="width:125px">
+        <p:selectOneMenu id="sexo" value="#{usuarioManagedBean.usuario.sexo}" style="width:125px">
             <f:selectItem itemLabel="Selecione" itemValue="" />
             <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
             <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
         </p:selectOneMenu>
       <p:outputLabel value="Endereço" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.endereco}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.endereco}"/>
       <p:outputLabel value="Telefone Movel" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.telefoneMovel}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.telefoneMovel}"/>
       <p:outputLabel value="Telefone Fixo" />
-      <p:inputText value="#{UsuarioManagedBean.usuario.telefoneFixo}"/>
+      <p:inputText value="#{usuarioManagedBean.usuario.telefoneFixo}"/>
 	  </p:panelGrid>
 	  <p:commandButton value="Salvar" 
 	                 action="#{usuarioManagedBean.Salvar}"
-	                 update=":formUsuario"
+	                 update=":formUsuario , :formTableUsuarios"
 	                 />
        </h:form>
 	   
