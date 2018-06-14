@@ -1,0 +1,134 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	>
+	
+	<!-- Titulo da Pagina -->
+	
+	<ui:define name="title">
+		<h:outputText value="Cadastro Categoria" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	  
+	<!-- Titulo da Pagina -->
+	
+	<!-- Imagem -->
+	
+	<h:panelGrid columns="1" width="100%">
+		 <p:graphicImage 
+					    library="sistema" 
+						name="imagens/logo.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+	</h:panelGrid>
+	
+	<!-- Imagem -->
+	
+	<!-- Menu -->
+	<p:separator />
+	
+	<p:menubar>
+   		<p:submenu label="Cadastro" icon="ui-icon-pencil">
+        	<p:menuitem value="Cadastro Usuario" url="http://localhost:8080/ProjetoMaven/pages/cadastroUsuario.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Campeonato" url="http://localhost:8080/ProjetoMaven/pages/cadastroCampeonato.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Equipe" url="http://localhost:8080/ProjetoMaven/pages/cadastroEquipe.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Local" url="http://localhost:8080/ProjetoMaven/pages/cadastroLocal.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Categoria" url="http://localhost:8080/ProjetoMaven/pages/cadastroCategoria.xhtml" />  
+        	<p:separator />
+        	<p:menuitem value="Cadastro Elenco" url="http://localhost:8080/ProjetoMaven/pages/cadastroElenco.xhtml" />       
+		</p:submenu>
+	</p:menubar>
+	
+	<p:separator />
+	
+	<!-- Menu -->
+	
+	<!-- Pagina Principal -->
+	  
+	  <h1><p:outputLabel value="Cadastro Categoria"/></h1>
+	  
+	  <h:form id="formCategoria">	
+	  <p:panelGrid columns="2">	      
+     
+	  <p:outputLabel for="seletorCampeonato" value="Campeonato" />
+			<p:selectOneMenu id="seletorCampeonato"	value="#{categoriaManagedBean.campeonatoCategoria}" converter="campeonatoConverter" required="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um Campeonato" />
+					<f:selectItems value="#{categoriaManagedBean.campeonatos}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nome}" />
+			</p:selectOneMenu>
+	  
+	  <p:outputLabel for="Nome" value="Nome" />
+	  <p:inputText id = "Nome" value="#{categoriaManagedBean.categoria.nome}" required="true" />
+
+	  <p:outputLabel for="nascidosAPartirDe"  value="Nascidos a Partir de" />
+	  <p:calendar id = "nascidosAPartirDe" value="#{categoriaManagedBean.categoria.nascidosAPartirDe}" pattern="dd/MM/yyyy" mask="true" required="true" />  
+	  
+      <h:outputLabel value="Genero" />
+			  <h:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}" required="true" requiredMessage="Entrada obrigatoria">		
+				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+	          </h:selectOneMenu>
+      
+      <p:outputLabel value="Quantidade Minima de Jogadoress" />
+	  <p:spinner value="#{categoriaManagedBean.categoria.qtdMinJogadores}" min="05" max="100" required="true"/>
+		        
+	  <p:outputLabel value="Quantidade Maxima de Jogadores" />
+	  <p:spinner value="#{categoriaManagedBean.categoria.qtdMaxJogadores}" min="10" max="500" required="true"/>
+		        
+  	  <p:outputLabel value="Quantiade Minima de Times por Categoria" />
+	  <p:spinner value="#{categoriaManagedBean.categoria.qtdMinTimesCat}" min="2" max="25" required="true"/>   
+           
+	  
+	  </p:panelGrid>
+		  <p:commandButton value="Salvar" action="#{categoriaManagedBean.salvar()}" update="formCategoria :tabelaCategoria"/>
+       </h:form>  
+       
+       
+	
+   <p:dataTable value="#{categoriaManagedBean.categorias}"
+                var="aux"
+                id="tabelaCategoria"
+                editable="true"     
+           		paginator="true"
+            	rows="15"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="05,10,15"  
+                
+   >
+      
+      <p:column headerText="Id">
+        <p:outputLabel value="#{aux.id}" />
+      </p:column>
+      <p:column headerText="Nome">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      <p:column headerText="Idade Minima">
+        <h:outputText value="#{aux.nascidosAPartirDe}">
+	        <f:convertDateTime pattern="dd/MM/yyyy" />
+	        </h:outputText>
+	  </p:column>
+      <p:column headerText="Genero">
+        <p:outputLabel value="#{aux.sexo}" />
+      </p:column>
+      <p:column headerText="Quantidade Minima de Jogadores">
+		<p:outputLabel value="#{aux.qtdMinJogadores}" />
+	  </p:column>
+	  <p:column headerText="Quantidade Maxima de Jogadores">
+		<p:outputLabel value="#{aux.qtdMaxJogadores}" />
+	  </p:column>
+	  <p:column headerText="Quantidade Minima de Times por Categoria">
+		<p:outputLabel value="#{aux.qtdMinTimesCat}" />
+	  </p:column>
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>

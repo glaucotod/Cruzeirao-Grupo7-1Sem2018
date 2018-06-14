@@ -1,0 +1,179 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	>
+	
+	<!-- Titulo da Pagina -->
+	
+	<ui:define name="title">
+		<h:outputText value="Cadastro Campeonato" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	  
+	<!-- Titulo da Pagina -->
+	
+	<!-- Imagem -->
+	
+	<h:panelGrid columns="1" width="100%">
+		 <p:graphicImage 
+					    library="sistema" 
+						name="imagens/logo.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+	</h:panelGrid>
+	
+	<!-- Imagem -->
+	
+	<!-- Menu -->
+	<p:separator />
+	
+	<p:menubar>
+   		<p:submenu label="Cadastro" icon="ui-icon-pencil">
+        	<p:menuitem value="Cadastro Usuario" url="http://localhost:8080/ProjetoMaven/pages/cadastroUsuario.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Campeonato" url="http://localhost:8080/ProjetoMaven/pages/cadastroCampeonato.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Equipe" url="http://localhost:8080/ProjetoMaven/pages/cadastroEquipe.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Local" url="http://localhost:8080/ProjetoMaven/pages/cadastroLocal.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Categoria" url="http://localhost:8080/ProjetoMaven/pages/cadastroCategoria.xhtml" />  
+        	<p:separator />
+        	<p:menuitem value="Cadastro Elenco" url="http://localhost:8080/ProjetoMaven/pages/cadastroElenco.xhtml" />       
+		</p:submenu>
+	</p:menubar>
+	
+	<p:separator />
+	
+	<!-- Menu -->
+	
+	<!-- Pagina Principal -->
+
+		<h1>
+			<p:outputLabel value="Cadastro de Campeonato" />
+		</h1>
+
+		<h:form id="formCampeonato">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel for ="name" value="Nome" />
+				<p:inputText id ="name" value="#{campeonatoManagedBean.campeonato.nome}" required="true" />
+
+				<p:outputLabel for="dataInicioCampeonato"  value="Data de Início" />
+			    <p:calendar id = "dataInicioCampeonato" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" pattern="dd/MM/yyyy" mask="true" required="true" />
+
+				<p:outputLabel for="dataFimCampeonato" value="Data de Término" />
+				<p:calendar id = "dataFimCampeonato" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" pattern="dd/MM/yyyy" mask="true" required="true" />
+
+				<p:outputLabel for="dataInicioInscricao" value="Início das inscrições" />
+				<p:calendar id = "dataInicioInscricao" value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" pattern="dd/MM/yyyy" mask="true" required="true" />
+
+				<p:outputLabel for="dataFimInscricao" value="Fim das inscrições" />
+				<p:calendar id = "dataFimInscricao" value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" pattern="dd/MM/yyyy" mask="true" required="true" />
+
+				<p:outputLabel for="valorTaxa" value="Valor da Inscrição" />
+	  			<p:spinner id ="valorTaxa" value="#{campeonatoManagedBean.campeonato.valorTaxa}" min="0" max="9999" required="true"/>  				
+				
+
+			</p:panelGrid>		  
+		  <br> </br>		  																				  
+		  <p:commandButton value="Salvar" action="#{campeonatoManagedBean.salvar}" update="formCampeonato :tabelaCampeonato"/>
+       </h:form>
+       
+       <p:separator />
+       
+	   <h4> <p:outputLabel value="Atribuição de Juizes, Locais e Categorias" /> </h4>	
+       
+       <h:form id="formCampeonato2">
+			<p:panelGrid columns="2">
+			
+			<p:outputLabel for="seletorCampeonato" value="Adicionar ao Campeonato:" />
+			<p:selectOneMenu id="seletorCampeonato"	value="#{campeonatoManagedBean.campeonato}" converter="campeonatoConverter" required="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um Campeonato" />
+					<f:selectItems value="#{campeonatoManagedBean.campeonatoSelecionado}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nome}" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel for="seletorJuiz" value="Selecionar Juiz" />
+			<p:selectOneMenu id="seletorJuiz"	value="#{campeonatoManagedBean.usuario}" converter="usuarioConverter">
+					<f:selectItem itemValue="" itemLabel="Selecione um Juiz" />
+					<f:selectItems value="#{campeonatoManagedBean.juizes}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nome}" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel for="seletorLocal" value="Selecionar Local" />
+			<p:selectOneMenu id="seletorLocal"	value="#{campeonatoManagedBean.local}" converter="localConverter">
+					<f:selectItem itemValue="" itemLabel="Selecione um Local" />
+					<f:selectItems value="#{campeonatoManagedBean.locais}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.endereco}" />
+			</p:selectOneMenu>
+	   
+	   		</p:panelGrid>
+	   		<br> </br>		  																				  
+		    <p:commandButton value="Salvar" action="#{campeonatoManagedBean.salvarSelecionado}" update="formCampeonato2 :tabelaCampeonato2" selection="#{campeonatoManagedBean.campeonatoSelecionado}"/>
+       </h:form>
+       
+       <p:separator />
+	   
+	   <br> </br>
+		
+		 <p:dataTable 
+	   		value="#{campeonatoManagedBean.campeonatos}" 
+	   		var="aux" 
+	   		id="tabelaCampeonato"
+	   		editable="true"     
+            paginator="true"
+            rows="15"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="05,10,15"> 
+
+			<p:column headerText="Id">
+				<p:outputLabel value="#{aux.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="Data de Início">
+				<h:outputText value="#{aux.dataInicioCampeonato}" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Data de Término">
+				<h:outputText value="#{aux.dataInicioInscricao}" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Início das inscrições">
+				<h:outputText value="#{aux.dataFimInscricao}" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Término das inscrições">
+				<h:outputText value="#{aux.valorTaxa}" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Ano do Campeonato">
+				<p:outputLabel value="#{aux.anoCampeonato}" />
+			</p:column>
+
+		</p:dataTable>
+		
+		<p:dataTable
+	   		value="#{campeonatoManagedBean.campeonatoSelecionado.juizes}" 
+	   		var="aux" 
+	   		id="tabelaCampeonato2"
+	   		editable="true"  >
+	   		
+	   		<p:column headerText="Nome">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>   
+		</p:dataTable>
+		
+		<br> </br>
+		
+
+	</ui:define>
+</ui:composition>

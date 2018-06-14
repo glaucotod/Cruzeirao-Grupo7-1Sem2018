@@ -1,0 +1,97 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	>
+	
+	<!-- Titulo da Pagina -->
+	
+	<ui:define name="title">
+		<h:outputText value="Inscrição" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	  
+	<!-- Titulo da Pagina -->
+	
+	<!-- Imagem -->
+	
+	<h:panelGrid columns="1" width="100%">
+		 <p:graphicImage 
+					    library="sistema" 
+						name="imagens/logo.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+	</h:panelGrid>
+	
+	<!-- Imagem -->
+	
+	<!-- Menu -->
+	
+	<p:menubar>
+   		<p:submenu label="Cadastro" icon="ui-icon-pencil">
+        	<p:menuitem value="Cadastro Usuario" url="http://localhost:8080/ProjetoMaven/pages/cadastroUsuario.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Campeonato" url="http://localhost:8080/ProjetoMaven/pages/cadastroCampeonato.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Equipe" url="http://localhost:8080/ProjetoMaven/pages/cadastroEquipe.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Local" url="http://localhost:8080/ProjetoMaven/pages/cadastroLocal.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Categoria" url="http://localhost:8080/ProjetoMaven/pages/cadastroCategoria.xhtml" />  
+        	<p:separator />
+        	<p:menuitem value="Cadastro Elenco" url="http://localhost:8080/ProjetoMaven/pages/cadastroElenco.xhtml" />       
+		</p:submenu>
+	</p:menubar>
+	
+	<!-- Menu -->
+	
+	<!-- Pagina Principal -->
+	
+	<h2><p:outputLabel value="Inscrição"/></h2>
+	
+	<p:separator />
+	
+	<h:form id="formInscricao">
+	<p:panelGrid columns="2">
+			<p:outputLabel value="Campeonatos" />
+			<p:selectOneMenu  value="#{inscricaoManagedBean.campInscricao}" converter="campeonatoConverter"  >
+				<p:ajax update="seletorCategoria" />
+				<f:selectItem itemValue="" itemLabel="Campeonatos" />
+				<f:selectItems value="#{inscricaoManagedBean.campeonatos}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nome}" />
+				</p:selectOneMenu>
+				<p:outputLabel value="Categorias" for="seletorCategoria" />
+			<p:selectOneMenu id="seletorCategoria" value="#{inscricaoManagedBean.catInscricao}" converter="categoriaConverter"   >
+				<f:selectItem itemValue="" itemLabel="Categorias" />
+				<f:selectItems value="#{inscricaoManagedBean.campInscricao.categorias}" var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nome}" />
+			</p:selectOneMenu>
+		
+		<p:outputLabel value="Jogadores" />
+	<p:dataTable id="checkboxDT" var="usuario" value="#{usuarioManagedBean.usuarios}" selection="#{inscricaoManagedBean.usuariosInscritos}" rowKey="#{usuario.nome}" style="margin-bottom:0">
+        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+        <f:facet name="header">   </f:facet>
+        <p:column headerText="Nome">
+            <h:outputText value="#{usuario.nome}" />
+        </p:column>
+        <p:column headerText="Data Nascimento">
+            <h:outputText value="#{usuario.dataNascimento}" />
+        </p:column>
+        <p:column headerText="Sexo">
+            <h:outputText value="#{usuario.sexo}" />
+        </p:column>
+        <p:column headerText="Role">
+            <h:outputText value="#{usuario.tipoUsuario}" />
+        </p:column>
+    </p:dataTable>
+				
+	</p:panelGrid>
+	</h:form>
+		
+	<p:commandButton value="Confirmar Inscrição" id="salvar" 
+						action="#{inscricaoManagedBean.salvar}"/>
+		
+	</ui:define>
+</ui:composition>

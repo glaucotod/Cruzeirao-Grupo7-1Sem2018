@@ -1,0 +1,100 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	>
+	
+	<!-- Titulo da Pagina -->
+	
+	<ui:define name="title">
+		<h:outputText value="Cadastro Local" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	  
+	<!-- Titulo da Pagina -->
+	
+	<!-- Imagem -->
+	
+	<h:panelGrid columns="1" width="100%">
+		 <p:graphicImage 
+					    library="sistema" 
+						name="imagens/logo.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+	</h:panelGrid>
+	
+	<!-- Imagem -->
+	
+	<!-- Menu -->
+	<p:separator />
+	
+	<p:menubar>
+   		<p:submenu label="Cadastro" icon="ui-icon-pencil">
+        	<p:menuitem value="Cadastro Usuario" url="http://localhost:8080/ProjetoMaven/pages/cadastroUsuario.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Campeonato" url="http://localhost:8080/ProjetoMaven/pages/cadastroCampeonato.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Equipe" url="http://localhost:8080/ProjetoMaven/pages/cadastroEquipe.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Local" url="http://localhost:8080/ProjetoMaven/pages/cadastroLocal.xhtml" />
+        	<p:separator />
+        	<p:menuitem value="Cadastro Categoria" url="http://localhost:8080/ProjetoMaven/pages/cadastroCategoria.xhtml" />  
+        	<p:separator />
+        	<p:menuitem value="Cadastro Elenco" url="http://localhost:8080/ProjetoMaven/pages/cadastroElenco.xhtml" />       
+		</p:submenu>
+	</p:menubar>
+	
+	<p:separator />
+	
+	<!-- Menu -->
+	
+	<!-- Pagina Principal -->
+	
+	<h2><p:outputLabel value="Cadastro Local"/></h2>
+	
+	<p:separator />
+
+		<h1>
+			<p:outputLabel value="Cadastro de Local" />
+		</h1>
+
+		<h:form id="formLocal">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Endereço" />
+				<p:inputText value="#{localManagedBean.local.endereco}" required="true" requiredMessage="Entrada obrigatoria" />
+
+			</p:panelGrid>		  
+		  <br> </br>		  																				  
+		  <p:commandButton value="Salvar" action="#{localManagedBean.salvar}" update="formLocal :tabelaLocal"/>
+       </h:form>
+	   
+	   <br> </br>
+		
+		 <p:dataTable 
+	   		value="#{localManagedBean.locais}" 
+	   		var="aux" 
+	   		id="tabelaLocal"
+	   		editable="true"     
+            paginator="true"
+            rows="15"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            rowsPerPageTemplate="05,10,15"  
+            emptyMessage="Nao existem locais cadastrados"
+	   	>
+
+			<p:column headerText="Id">
+				<p:outputLabel value="#{aux.id}" />
+			</p:column>
+			<p:column headerText="Endereco">
+				<p:outputLabel value="#{aux.endereco}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>

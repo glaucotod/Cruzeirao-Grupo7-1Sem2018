@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<p:panelMenu>
+			<p:submenu label="Cadastros" >
+		        <p:menuitem value="Novo Usuario" url="novoUsuario.xhtml" />		       	   
+				<p:menuitem value="Cadastro Campeonato" url="cadastroCampeonato.xhtml" rendered="#{request.isUserInRole('ORGANIZADOR') or request.isUserInRole('SUPERADMIN')}" />			
+				<p:menuitem value="Cadastro Categoria" url="cadastroCategoria.xhtml" />					
+				<p:menuitem value="Cadastro Local" url="cadastroLocal.xhtml" />								
+<<<<<<< HEAD
+				<p:menuitem value="Cadastro Juiz" url="cadastroJuiz.xhtml" />			
+=======
+				<p:menuitem value="Cadastro Juiz" url="cadastroJuiz.xhtml" />		
+				<p:menuitem value="Cadastro Usuario" url="cadastroUsuario.xhtml" />		
+>>>>>>> lhc
+				<p:menuitem value="Cadastro Time" url="cadastroTime.xhtml" />
+				<p:menuitem value="Cadastro Elenco" url="cadastroElenco.xhtml" />										
+			</p:submenu>
+		</p:panelMenu>
+	</h:form>
+</ui:composition>
+
